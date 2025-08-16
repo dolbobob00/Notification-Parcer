@@ -2,6 +2,11 @@
 
 This Flutter project is an application that listens to **all incoming notifications** (from any app) and **SMS messages** on Android devices.  
 The app saves notifications and SMS messages into a local database, even when running in the **background**.
+<img width="500" height="1050" alt="изображение" src="https://github.com/user-attachments/assets/f834aeee-7be2-4621-9290-5c26e4051d09" /> **HomePage**
+<img width="500" height="166" alt="изображение" src="https://github.com/user-attachments/assets/2cfabf5f-e3d9-4697-8ad3-9e1b82682499" /> **On tapping you get package name of notification place incomer**
+<img width="500" height="1050" alt="изображение" src="https://github.com/user-attachments/assets/4bed8dc8-2f3a-4936-ac16-deeb11184d36" /> **Bottom sheet as menu**
+
+
 
 ⚠️ **Note**:  
 This functionality is only supported on **Android** due to system restrictions.  
