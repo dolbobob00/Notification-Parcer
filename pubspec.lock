@@ -302,10 +302,9 @@ packages:
   flutter_notification_listener:
     dependency: "direct main"
     description:
-      name: flutter_notification_listener
-      sha256: "5cdf1b12f8affcf7c265f4519af66ed231b27a4100751a37cd2bb246d6a364c1"
-      url: "https://pub.dev"
-    source: hosted
+      path: "plugins/flutter_notification_listener-1.3.4"
+      relative: true
+    source: path
     version: "1.3.4"
   flutter_test:
     dependency: "direct dev"

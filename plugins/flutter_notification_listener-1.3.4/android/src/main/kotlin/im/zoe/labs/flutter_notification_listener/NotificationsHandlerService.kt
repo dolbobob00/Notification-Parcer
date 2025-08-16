@@ -1,5 +1,5 @@
 package im.zoe.labs.flutter_notification_listener
-
+import android.content.pm.ServiceInfo
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -152,7 +152,6 @@ class NotificationsHandlerService: MethodChannel.MethodCallHandler, Notification
 
         // store the evt to cache
         eventsCache[evt.uid] = evt
-
         synchronized(sServiceStarted) {
             if (!sServiceStarted.get()) {
                 Log.d(TAG, "service is not start try to queue the event")
@@ -233,7 +232,7 @@ class NotificationsHandlerService: MethodChannel.MethodCallHandler, Notification
                 ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
             )
         } else {
-            startForeground(NOTIFICATION_ID, notification)
+            startForeground(ONGOING_NOTIFICATION_ID, notification)
         }
 
         return true
@@ -249,6 +248,8 @@ class NotificationsHandlerService: MethodChannel.MethodCallHandler, Notification
         stopForeground(true)
         return true
     }
+
+    
 
     private fun tapNotification(uid: String): Boolean {
         Log.d(TAG, "tap the notification: $uid")
