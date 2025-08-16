@@ -1,10 +1,7 @@
 import 'dart:isolate';
-
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:hive/hive.dart';
 import 'package:notification_handler/src/repository/local_db/local_db.dart';
-import 'package:notification_handler/src/domain/entities/notification.dart';
 import 'package:notification_handler/src/domain/icon_service/app_icon_sevice.dart';
 import 'package:notification_handler/src/domain/notification_listener/bloc/notf_handler_bloc.dart';
 import 'package:notification_handler/src/domain/notification_listener/notification_listener.dart';
@@ -40,11 +37,10 @@ class ServiceLocator {
     ReceivePort port = ReceivePort();
     getIt.registerSingleton<ReceivePort>(port);
     if (!getIt.isRegistered<ConfiguratorNotificationListener>()) {
-      // Registring configurator (initialising, gettting and more)
       final config = ConfiguratorNotificationListener();
       await config.initPlatformState(port);
       getIt.registerSingleton<ConfiguratorNotificationListener>(config);
-      //Bloc for outside context usage
+    
     }
   }
 

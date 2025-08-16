@@ -83,15 +83,17 @@ class NotfHandlerBloc extends Bloc<NotfHandlerEvent, NotfHandlerState> {
       }
     });
     on<NotfClearHistory>((event, emit) async {
-      await db.clear();
-      emit(NotfError(error: 'Waiting for notifications'));
+      await db.clear(path: boxPath);
+      emit(NotfLoading());
     });
+
+    // !!!
 
     // For receiving, dont use in flutter manually, its used in notf_listener
     on<NotfReceive>((event, emit) async {
       final data = event.data;
       getIt.get<Talker>().debug(data);
-      // if (data.title == null && data.text == null) return;
+      if (data.title == null && data.text == null) return;
       final entity = NotificationEntity(
         packageName: data.packageName,
         text: data.text,
@@ -109,7 +111,7 @@ class NotfHandlerBloc extends Bloc<NotfHandlerEvent, NotfHandlerState> {
       talker.debug(entity);
     });
 
-    // Changer for notf_listener. Dont use manually
+    // Just Changer for notf_listener. Dont use manually
     on<NotfLoadedHistory>((event, emit) {
       try {
         emit(NotfLoaded(notifications: event.notfEntities));

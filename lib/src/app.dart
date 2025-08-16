@@ -14,7 +14,6 @@ class MainApp extends StatelessWidget {
       create: (context) => getIt.get<NotfHandlerBloc>()..add(NotfStart()),
       child: MaterialApp(
         navigatorKey: routerKey,
-        initialRoute: '/',
         home: HomePage(),
       ),
     );
